@@ -4,12 +4,12 @@ import { createInterface } from 'readline';
 const csvService = {
   getReadCsvData: async () => {
     const csvData = [];
-    const readCsvFile = createInterface({
+    const csvFileReader = createInterface({
       input: createReadStream('./data/dados.csv'),
     });    
-    for await (const line of readCsvFile) {
-      let csvLine = line.split(';');
-      for (const fileLine of csvLine) {
+    for await (const line of csvFileReader) {
+      let columnValues = line.split(';');
+      for (const fileLine of columnValues) {
         csvData.push(fileLine);
       }
     }

@@ -3,6 +3,6 @@ import csvController from "./src/controller/csvController.js";
 
 const routes = Router();
 
-routes.get('/file', csvController.getCsvData);
+routes.get('/', csvController.getParsedCsvData);
 
 export default routes;

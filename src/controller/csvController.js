@@ -1,10 +1,10 @@
 import csvService from "../service/csvService.js";
 
 const csvController = {
-    getCsvData: async (req, res) => {        
+  getParsedCsvData: async (req, res) => {        
       try {
-        const csvData = await csvService.getReadCsvData();
-        res.status(200).json(csvData);
+        const parsedCsv = await csvService.getReadCsvData();
+        res.status(200).json(parsedCsv);
       } catch (error) {
         res.status(400).send(error.message);
       }
