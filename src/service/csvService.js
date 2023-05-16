@@ -1,3 +1,4 @@
+import fs from "fs";
 import { createReadStream } from "fs";
 import { createInterface } from "readline";
 
@@ -27,8 +28,16 @@ const csvService = {
         reject(err);
       });
     });
+  },
+  getWriteCsvData: (data) => {
+    const headers = Object.keys(data);
+    const values = headers.map(header => data[header] || '');
+    const csvData = `${values.join(';')}\n`;
+    const csvPath = './data/dados.csv';
+    fs.appendFileSync(csvPath, csvData);
   }
-}
+  ,
+};
 
 
 export default csvService;

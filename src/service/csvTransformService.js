@@ -5,9 +5,6 @@ const csvTransformService = {
     columnNames.forEach((columnName, csvData) => {
       obj[columnName] = line[csvData]
           .replace(/[^\w\s]/gi, '')
-          .replace(/_/gi, '')
-          .normalize('NFD')
-          .replace(/[\u0300-\u036f]/g, '');
     });
     return obj;
   });

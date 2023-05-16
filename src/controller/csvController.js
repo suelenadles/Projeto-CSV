@@ -13,7 +13,17 @@ const csvController = {
     } catch (error) {
       res.status(400).send(error.message);
     }
+  },
+  getCreateCsvData: async (req, res) => {
+    try {
+      const data = req.body;
+      await csvService.getWriteCsvData(data);
+      res.status(200).send('Dados gravados com sucesso!');
+    } catch (error) {
+      res.status(400).send(error.message);
+    }
   }
-};
+  
+  };
 
 export default csvController;
