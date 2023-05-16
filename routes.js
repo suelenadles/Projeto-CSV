@@ -3,7 +3,7 @@ import csvController from "./src/controller/csvController.js";
 
 const routes = Router();
 
-routes.get('/', csvController.getParsedCsvData);
-routes.post('/writecsv', csvController.getCreateCsvData);
+routes.get('/csv/:csvName', csvController.getParsedCsvData);
+//routes.post('/writecsv', csvController.getCreateCsvData);
 
 export default routes;
