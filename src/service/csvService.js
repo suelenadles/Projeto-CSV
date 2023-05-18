@@ -29,15 +29,17 @@ const csvService = {
       });
     });
   },
-  getWriteCsvData: (data) => {
-    const headers = Object.keys(data);
-    const values = headers.map(header => data[header] || '');
-    const csvData = `${values.join(';')}\n`;
-    const csvPath = './data/dados.csv';
-    fs.appendFileSync(csvPath, csvData);
-  }
-  ,
-};
+  getWriteCsvData: async (data) => {
+      const csvHeaders = Object.keys(data);
+      const csvValues = csvHeaders.map(header => {
+         const value = data[header];
+        return value !== undefined && value !== null ? value : "";
+      });
+      const csvData = `${csvValues.join(';')}\n`;
+      const csvPath = './data/dados.csv';
+      await fs.appendFileSync(csvPath, csvData);
+},
+}
 
 
 export default csvService;
